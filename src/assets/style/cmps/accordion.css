@@ -1,0 +1,60 @@
+.accordion {
+    --margin: 0.4em;
+    --time: 0.2s;
+    padding: 0.3em;
+    border-bottom: 1.5px solid transparent;
+    border-bottom-color: hsla(340 10% 52%/.5);
+    transition: background-color 0.2s;
+    border-radius: 0.5em 0.5em 0 0;
+    overflow: hidden;
+
+}
+
+.accordion:not(:last-of-type) {
+    margin-bottom: var(--margin);
+}
+
+.accordion:hover {
+    background-color: hsl(340 82% 52% / .03);
+}
+
+.accordion .title-container {
+    cursor: pointer;
+    display: flex;
+    padding: 1em var(--margin);
+
+    h2 {
+        flex-grow: 1;
+    }
+
+    span {
+        /* transition: rotate var(--time); */
+        scale: 1.5;
+    }
+}
+
+.accordion .content {
+    display: grid;
+    grid-template-rows: 0fr;
+    /* transition: grid-template-rows var(--time); */
+
+    >* {
+        overflow: hidden;
+        padding-inline: var(--margin);
+    }
+
+}
+
+.accordion:has(.open) {
+    span {
+        rotate: 180deg;
+    }
+
+    .content {
+        grid-template-rows: 1fr;
+
+        >* {
+            margin-bottom: 0.5em;
+        }
+    }
+}
