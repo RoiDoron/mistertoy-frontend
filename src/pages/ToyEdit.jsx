@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { toyService } from "../services/toy.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 
 export function ToyEdit() {
@@ -32,10 +33,12 @@ export function ToyEdit() {
         ev.preventDefault()
         saveToy(toyToEdit)
             .then(() => {
+                showSuccessMsg('Toy saved')
                 navigate('/toy')
             })
             .catch(err => {
-                console.log('Had issues in toy edit', err);
+                console.log('Had issues in toy edit', err)
+                showErrorMsg('Had issues in toy saving')
             })
     }
 

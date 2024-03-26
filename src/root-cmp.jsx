@@ -11,6 +11,7 @@ import { About } from './pages/About.jsx'
 import { ToyIndex } from './pages/ToyIndex.jsx'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
+import { UserMsg } from './cmp/UserMsg.jsx'
 
 
 export function App() {
