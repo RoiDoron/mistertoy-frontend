@@ -4,7 +4,7 @@ import { useEffectUpdate } from "../customHooks/useEffectUpdate.js"
 
 
 
-export function ToyFilter({ filterBy, onSetFilter }){
+export function ToyFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     onSetFilter = useRef(utilService.debounce(onSetFilter, 300))
 
@@ -41,6 +41,12 @@ export function ToyFilter({ filterBy, onSetFilter }){
                     onChange={handleChange}
                 />
 
+                <select onChange={handleChange}  name="sortBy" id="">
+                    <option value="">Sort</option>
+                    <option value="name">Name</option>
+                    <option value="price">Price</option>
+                    <option value="createdAt">Created</option>
+                </select>
             </form>
 
         </section>

@@ -20,17 +20,6 @@ export function loadToys() {
         })
 }
 
-// export function removeCar(carId) {
-//     return carService.remove(carId)
-//         .then(() => {
-//             store.dispatch({ type: REMOVE_CAR, carId })
-//         })
-//         .catch(err => {
-//             console.log('car action -> Cannot remove car', err)
-//             throw err
-//         })
-// }
-
 export function removeToyOptimistic(toyId) {
     store.dispatch({ type: REMOVE_TOY, toyId })
     return toyService.remove(toyId)

@@ -24,7 +24,10 @@ function query(filterBy = {}) {
         .then(toys => {
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-            const regExp = new RegExp(filterBy.txt, 'i')
+            if (filterBy.sortBy === 'price') toys.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+            if (filterBy.sortBy === 'created') toys.sort((a, b) => parseFloat(a.createdAt) - parseFloat(b.createdAt))
+            if (filterBy.sortBy === 'name') toys.sort((a, b) => a.name.localeCompare(b.name))
+                const regExp = new RegExp(filterBy.txt, 'i')
             return toys.filter(toy =>
                 regExp.test(toy.name) &&
                 toy.price <= filterBy.maxPrice
