@@ -9,6 +9,8 @@ import { Home } from './pages/Home.jsx'
 import { store } from './store/store.js'
 import { About } from './pages/About.jsx'
 import { ToyIndex } from './pages/ToyIndex.jsx'
+import { ToyEdit } from './pages/ToyEdit.jsx'
+import { ToyDetails } from './pages/ToyDetails.jsx'
 
 
 export function App() {
@@ -22,6 +24,9 @@ export function App() {
                        <Route element={<Home/>} path='/'/>
                        <Route element={<About/>} path='/about'/>
                        <Route element={<ToyIndex/>} path='/toy'/>
+                       <Route element={<ToyEdit/>} path='/toy/edit'/>
+                       <Route element={<ToyEdit/>} path='/toy/edit/:toyId'/>
+                       <Route element={<ToyDetails/>} path='/toy/:toyId'/>
                     </Routes>
                 </main>
                 <AppFooter />
