@@ -9,7 +9,7 @@ export function ToyPreview({toy}){
             <h4>{toy.name}</h4>
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             <hr />
-            {/* <Link to={`/car/edit/${car._id}`}>Edit</Link> &nbsp; | &nbsp; */}
+            <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp; | &nbsp;
             <Link to={`/toy/${toy._id}`}>Details</Link>
 
         </article>

@@ -37,11 +37,12 @@ function remove(toyId) {
 
 
 function save(toy) {
+    
     if (toy._id) {
+        console.log('hi');
         return storageService.put(STORAGE_KEY, toy)
     } else {
-        // when switching to backend - remove the next line
-        toy.owner = userService.getLoggedinUser()
+       toy._id = utilService.makeId()
         return storageService.post(STORAGE_KEY, toy)
     }
 }
@@ -49,9 +50,11 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-        speed: utilService.getRandomIntInclusive(75, 200),
+        name:'',
+        price: utilService.getRandomIntInclusive(20, 180),
+        labels:['On wheels', 'Battery Powered'],
+        createdAt: Date.now(),
+        inStock: true
     }
 }
 
