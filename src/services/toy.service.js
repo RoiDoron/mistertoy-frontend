@@ -20,15 +20,23 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
+    
+    let Toys
     return storageService.query(STORAGE_KEY)
-        .then(toys => {
+    .then(toys => {
+            Toys = toys
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
+            if (!filterBy.stock) filterBy.stock = ''
             if (filterBy.sortBy === 'price') toys.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
             if (filterBy.sortBy === 'created') toys.sort((a, b) => parseFloat(a.createdAt) - parseFloat(b.createdAt))
             if (filterBy.sortBy === 'name') toys.sort((a, b) => a.name.localeCompare(b.name))
-                const regExp = new RegExp(filterBy.txt, 'i')
-            return toys.filter(toy =>
+            if (filterBy.stock === 'inStock') Toys = toys.filter(toy => toy.inStock === true)
+            if (filterBy.stock === 'out') Toys = toys.filter(toy => toy.inStock === false)
+
+
+            const regExp = new RegExp(filterBy.txt, 'i')
+            return Toys.filter(toy =>
                 regExp.test(toy.name) &&
                 toy.price <= filterBy.maxPrice
             )
@@ -78,21 +86,21 @@ function _createToys() {
         toys.push(_createToy('Talking doll', ['Doll', 'Battery Powered', 'Baby']))
         toys.push(_createToy('Dog robot', ['Battery Powered']))
         toys.push(_createToy('Remote control tractor', ['On wheels', 'Battery Powered']))
-        toys.push(_createToy('Lego duplo', ['Puzzle', 'Baby']))
+        toys.push(_createToy('Lego duplo', ['Puzzle', 'Baby'], false))
 
         utilService.saveToStorage(STORAGE_KEY, toys)
     }
     return toys
 }
 
-function _createToy(name, labels) {
+function _createToy(name, labels, inStock = true) {
     return {
         _id: utilService.makeId(),
         name,
         price: utilService.getRandomIntInclusive(20, 180),
         labels,
         createdAt: 1631031801011,
-        inStock: true,
+        inStock
 
     }
 }

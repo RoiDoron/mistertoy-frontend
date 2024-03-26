@@ -47,6 +47,12 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <option value="price">Price</option>
                     <option value="createdAt">Created</option>
                 </select>
+
+                <select onChange={handleChange}  name="stock" id="">
+                    <option value="">Stock</option>
+                    <option value="inStock">In stock</option>
+                    <option value="out">Out of stock</option>
+                </select>
             </form>
 
         </section>
