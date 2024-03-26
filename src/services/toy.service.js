@@ -19,10 +19,16 @@ export const toyService = {
     getDefaultFilter
 }
 
-function query() {
+function query(filterBy = {}) {
     return storageService.query(STORAGE_KEY)
         .then(toys => {
-            return toys
+            if (!filterBy.txt) filterBy.txt = ''
+            if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
+            const regExp = new RegExp(filterBy.txt, 'i')
+            return toys.filter(toy =>
+                regExp.test(toy.name) &&
+                toy.price <= filterBy.maxPrice
+            )
         })
 }
 
@@ -37,12 +43,12 @@ function remove(toyId) {
 
 
 function save(toy) {
-    
+
     if (toy._id) {
         console.log('hi');
         return storageService.put(STORAGE_KEY, toy)
     } else {
-       toy._id = utilService.makeId()
+        toy._id = utilService.makeId()
         return storageService.post(STORAGE_KEY, toy)
     }
 }
@@ -50,9 +56,9 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        name:'',
+        name: '',
         price: utilService.getRandomIntInclusive(20, 180),
-        labels:['On wheels', 'Battery Powered'],
+        labels: ['On wheels', 'Battery Powered'],
         createdAt: Date.now(),
         inStock: true
     }
@@ -76,7 +82,7 @@ function _createToys() {
     return toys
 }
 
-function _createToy(name,labels) {
+function _createToy(name, labels) {
     return {
         _id: utilService.makeId(),
         name,

@@ -6,6 +6,9 @@ export const UPDATE_TOY = 'UPDATE_TOY'
 export const REMOVE_TOY = 'REMOVE_TOY'
 export const TOY_UNDO = 'TOY_UNDO'
 
+export const SET_FILTER_BY = 'SET_FILTER_BY'
+export const SET_IS_LOADING = 'SET_IS_LOADING'
+
 const initialState = {
     toys: [],
     lastToys: []
@@ -38,6 +41,18 @@ export function toyReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 toys: [...state.lastToys]
+            }
+
+        case SET_FILTER_BY:
+            return {
+                ...state,
+                filterBy: { ...state.filterBy, ...action.filterBy }
+            }
+
+        case SET_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
             }
 
         default:
