@@ -2,24 +2,31 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 
-import { loadToys, removeToyOptimistic, setFilterBy } from "../store/actions/toy.actions.js";
+import { loadToys, removeToyOptimistic, setFilterBy, setSortBy } from "../store/actions/toy.actions.js";
 import { ToyList } from "../cmp/ToyList.jsx";
 import { ToyFilter } from "../cmp/ToyFilter.jsx";
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js";
 
 
 export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+    const sortBy = useSelector(state => state.toyModule.sortBy)
 
     useEffect(() => {
-        loadToys().catch(err => {
+        loadToys(filterBy,sortBy).catch(err => {
             console.log('cannot load toys');
         })
-    }, [filterBy])
+    }, [filterBy,sortBy])
 
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
     }
+
+    function onSetSort(sort) {
+        setSortBy(sort)
+    }
+
 
     function onRemoveToy(toyId) {
         console.log(toyId);
@@ -39,6 +46,8 @@ export function ToyIndex() {
         <ToyFilter
         filterBy={filterBy}
         onSetFilter={onSetFilter}
+        sortBy={sortBy}
+        onSetSort={onSetSort}
         />
         <main>
             <ToyList

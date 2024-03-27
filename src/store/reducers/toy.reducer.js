@@ -1,3 +1,4 @@
+import { toyService } from "../../services/toy.service.js"
 
 //* Toys
 export const SET_TOYS = 'SET_TOYS'
@@ -8,10 +9,13 @@ export const TOY_UNDO = 'TOY_UNDO'
 
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
+export const SET_SORTBY = 'SET_SORTBY'
 
 const initialState = {
     toys: [],
-    lastToys: []
+    lastToys: [],
+    filterBy: toyService.getDefaultFilterBy(),
+    sortBy: toyService.getDefaultSort()
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -53,6 +57,12 @@ export function toyReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 isLoading: action.isLoading
+            }
+
+            case SET_SORTBY:
+            return {
+                ...state,
+                sortBy: { ...state.sortBy, ...action.sortBy }
             }
 
         default:
