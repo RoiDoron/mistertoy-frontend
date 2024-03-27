@@ -27,9 +27,10 @@ export function MultiSelect({ onSetLabel, toyId }) {
   const [labels, setLabels] = useState([])
 
   useEffect(() => {
+    console.log(labels);
     onSetLabel(labels)
     if (toyId) loadToy()
-  }, [toyId])
+  }, [toyId,labels])
 
   function loadToy() {
     toyService.getById(toyId)
