@@ -3,13 +3,13 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { toyService } from "../services/toy.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { MultiSelect } from "../cmp/MultiSelect.jsx"
 
 
 export function ToyEdit() {
     const navigate = useNavigate()
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const { toyId } = useParams()
-    console.log(toyId);
     useEffect(() => {
         if (toyId) loadToy()
     }, [toyId])
@@ -27,6 +27,12 @@ export function ToyEdit() {
         let { value, type, name: field } = target
         value = type === 'number' ? +value : value
         setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
+    }
+
+    function onSetLabel(label) {
+        console.log(label);
+        // const labels = toyToEdit.labels.includes(label) ? toyToEdit.labels.filter(l => l !== label) : [label, ...toyToEdit.labels]
+        setToyToEdit(prevToy => ({ ...prevToy, labels: label }))
     }
 
     function onSaveToy(ev) {
@@ -65,7 +71,7 @@ export function ToyEdit() {
                 value={toyToEdit.price}
                 onChange={handleChange}
             />
-
+            <MultiSelect onSetLabel={onSetLabel} toyId={toyId} />
             <div>
                 <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
                 <Link to="/toy">Cancel</Link>

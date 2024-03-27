@@ -40,7 +40,7 @@ function getEmptyToy() {
     return {
         name: '',
         price: utilService.getRandomIntInclusive(20, 180),
-        labels: ['On wheels', 'Battery Powered'],
+        labels: [],
         createdAt: Date.now(),
         inStock: true
     }
