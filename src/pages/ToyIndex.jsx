@@ -40,15 +40,17 @@ export function ToyIndex() {
     }
 
     console.log(toys);
-    return <section className="toy-index-container">
-        <h3> Toys </h3>
-        <Link to='/toy/edit'>Add toy</Link>
+    return <section className="toy-index-container ">
+        <div className="filter-container">
+        
         <ToyFilter
         filterBy={filterBy}
         onSetFilter={onSetFilter}
         sortBy={sortBy}
         onSetSort={onSetSort}
         />
+        <button><Link to='/toy/edit'>Add toy</Link></button>
+        </div>
         <main>
             <ToyList
                 onRemoveToy={onRemoveToy}

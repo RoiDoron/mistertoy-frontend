@@ -17,6 +17,8 @@ export const toyService = {
 }
 
 function query(filterBy ,sort) {
+    console.log(filterBy);
+    
     return httpService.get(BASE_URL, { params: { filterBy, sort } })
 }
 
@@ -29,7 +31,7 @@ function remove(toyId) {
 
 function save(toy) {
     if (toy._id) {
-        return httpService.put(BASE_URL, toy)
+        return httpService.put(BASE_URL+toy._id, toy)
     } else {
         return httpService.post(BASE_URL, toy)
     }

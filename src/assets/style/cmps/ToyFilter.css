@@ -1,0 +1,19 @@
+.toy-filter {
+    background-color: var(--gray1);
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.toy-filter input{
+    display: block;
+    margin-top: 1em;
+    border-radius: 3em;
+    border: none;
+}
+
+.toy-filter select{
+    display: block;
+    margin-top: 1em;
+    border-radius: 3em;
+    border: none;
+}

@@ -34,7 +34,6 @@ export function ToyFilter({ filterBy, onSetFilter,onSetSort,sortBy }) {
         <section className="toy-filter full main-layout">
             <h2>Toys Filter</h2>
             <form >
-                <label htmlFor="name">Name:</label>
                 <input type="text"
                     id="name"
                     name="txt"
@@ -43,7 +42,6 @@ export function ToyFilter({ filterBy, onSetFilter,onSetSort,sortBy }) {
                     onChange={handleChange}
                 />
 
-                <label htmlFor="maxPrice">Max price:</label>
                 <input type="number"
                     id="maxPrice"
                     name="maxPrice"

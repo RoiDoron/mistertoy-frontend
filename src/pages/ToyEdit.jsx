@@ -47,7 +47,7 @@ export function ToyEdit() {
                 showErrorMsg('Had issues in toy saving')
             })
     }
-
+    if (!toyToEdit) return <div>loading...</div>
     return <section className="edit-container">
         <h2>{toyToEdit._id ? 'Edit' : 'Add'}</h2>
 
@@ -71,7 +71,7 @@ export function ToyEdit() {
                 value={toyToEdit.price}
                 onChange={handleChange}
             />
-            <MultiSelect onSetLabel={onSetLabel} toyId={toyId} />
+            <MultiSelect onSetLabel={onSetLabel} toyToEdit={toyToEdit} />
             <div>
                 <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
                 <Link to="/toy">Cancel</Link>

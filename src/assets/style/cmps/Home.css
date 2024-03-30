@@ -1,0 +1,13 @@
+.home-container{
+    text-align: center;
+}
+
+.home-main{
+    padding: 1em;
+    margin-top: 1.5em;
+    background-color: var(--green);
+    border-radius: 1em;
+}
+.home-main img{
+    border-radius: 1em;
+}

@@ -1,0 +1,29 @@
+.toy-preview {
+    position: relative;
+    text-align: center;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-radius: 1em;
+    min-width:250px ;
+}
+.toy-preview h4{
+    text-transform: capitalize;
+    color: black;
+}
+
+.toy-preview img {
+    max-width: 100px;
+}
+.toy-preview button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(250, 235, 215, 0);
+    border-radius: 50%;
+}
+
+.toy-preview button:hover{
+    background-color: var(--gray2);
+}

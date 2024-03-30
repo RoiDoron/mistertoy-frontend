@@ -1,4 +1,3 @@
-import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -22,25 +21,14 @@ const labelsOpt = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
   'Outdoor', 'Battery Powered']
 
 
-export function MultiSelect({ onSetLabel, toyId }) {
-  //   const theme = useTheme();
-  const [labels, setLabels] = useState([])
+export function MultiSelect({ onSetLabel, toyToEdit }) {
+ 
+  const [labels, setLabels] = useState([...toyToEdit.labels])
 
-  useEffect(() => {
-    console.log(labels);
-    onSetLabel(labels)
-    if (toyId) loadToy()
-  }, [toyId,labels])
-
-  function loadToy() {
-    toyService.getById(toyId)
-      .then(toy => setLabels(toy.labels))
-      .catch(err => {
-        console.log('Had issues in toy details', err)
-        navigate('/toy')
-      })
-  }
-
+  useEffect(()=>{
+    setLabels([...toyToEdit.labels])
+  },[toyToEdit.labels])
+  
   const handleChange = (event) => {
     const {
       target: { value },
@@ -49,6 +37,7 @@ export function MultiSelect({ onSetLabel, toyId }) {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     )
+    onSetLabel(labels)
 
   }
   return (

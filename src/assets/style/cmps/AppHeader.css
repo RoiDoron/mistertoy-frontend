@@ -1,16 +1,16 @@
 .app-header {
-    background-color: var(--clr1);
-    color: var(--clr1bg);
     padding-block: 1em;
+    text-align: center;
+    box-shadow: 9px -1px 9px 0px black;
+}
+
+.logo {
+    font-family: "Dancing Script", cursive;
+    font-size: 1.5em;
 }
 
 .app-nav {
     display: flex;
     gap: 15px;
-}
 
-@media(max-width: 720px) {
-    .app-header {
-        color: var(--clr2bg);
-    }
 }

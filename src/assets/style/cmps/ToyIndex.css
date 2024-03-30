@@ -1,0 +1,20 @@
+.toy-index-container {
+    margin-top: 1em;
+    text-align: center;
+    gap: 2em;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+@media(max-width: 720px) {
+    .toy-index-container {
+        margin-top: 1em;
+        text-align: center;
+        gap: 2em;
+        display:block;
+        /* justify-content: space-between; */
+    
+    }
+}
