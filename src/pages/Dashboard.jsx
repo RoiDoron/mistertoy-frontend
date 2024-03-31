@@ -1,25 +1,24 @@
-import { useState } from "react";
-import { PriceLabelChart } from "../cmp/PriceLableChart";
-import { toyService } from "../services/toy.service";
+import { useSelector } from "react-redux";
+import { Chart } from "../cmp/Chart";
 
 
 
 export function Dashboard() {
-    const [data, setData] = useState(null)
-
-
-    if (!data) return <div>loading...</div>
+    const toys = useSelector(storeState => storeState.toyModule.toys)
+    console.log(toys)
+    const labelCounts = {}
+    console.log('toys', toys)
+    toys.forEach(toy => {
+        console.log(toy)
+        toy.labels?.forEach(label => {
+            console.log('label', label)
+            labelCounts[label] = (labelCounts[label] || 0) + 1
+        })
+    })
     return (
-        <section className="dashboard-container ">
-            <h1>Statistics</h1>
-            <main className="flex justify-between">
-                <div className="price chart">
-                    <PriceLabelChart />
-                </div>
-                <div className="price chart">
-                    {/* <PriceLabelChart/> */}
-                </div>
-            </main>
+        <section className="dashboard-container">
+            <h1>Labels chart:</h1>
+            <Chart labelCounts={labelCounts} />
         </section>
     )
 }
