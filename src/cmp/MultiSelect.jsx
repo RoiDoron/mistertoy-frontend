@@ -22,12 +22,12 @@ const labelsOpt = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
 
 
 export function MultiSelect({ onSetLabel, toyToEdit }) {
- 
+ console.log(toyToEdit);
   const [labels, setLabels] = useState([...toyToEdit.labels])
 
   useEffect(()=>{
-    setLabels([...toyToEdit.labels])
-  },[toyToEdit.labels])
+    onSetLabel(labels)
+  },[labels])
   
   const handleChange = (event) => {
     const {
@@ -37,7 +37,7 @@ export function MultiSelect({ onSetLabel, toyToEdit }) {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     )
-    onSetLabel(labels)
+    
 
   }
   return (
