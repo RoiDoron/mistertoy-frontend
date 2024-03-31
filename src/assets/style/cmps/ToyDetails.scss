@@ -1,0 +1,28 @@
+.details-container {
+    text-align: center;
+    background-color: var(--green);
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 1em;
+
+    & h1 {
+        margin-bottom: 1em;
+    }
+
+    & h3 {
+        margin: 1em;
+    }
+
+    & .content-container {
+        max-width: 300px;
+        margin: auto;
+    }
+
+    & .in-stock {
+        color: var(--clr2bg);
+    }
+
+    & .out-of-stock {
+        color: red;
+    }
+}
