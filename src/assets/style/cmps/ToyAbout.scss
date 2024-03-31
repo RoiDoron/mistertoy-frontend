@@ -1,0 +1,11 @@
+.about-container{
+    background-color: var(--green);
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+    margin-top: 1em;
+
+    & span{
+        font-weight: bolder;
+    }
+}
