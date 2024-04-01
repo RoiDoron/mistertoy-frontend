@@ -5,7 +5,7 @@ export function Home(){
     <main className="home-main ">
         <h1 className="logo">Mister toy</h1>
         <p>Toys for every on from young to old from boys to girls to nonbinary</p>
-        <img src="/src/assets/img/jerry-wang-qBrF1yu5Wys-unsplash.jpg" alt="" />
+        <img src="https://source.unsplash.com/wooden-train-set-qBrF1yu5Wys" alt="" />
         </main>
     </section>
 }
