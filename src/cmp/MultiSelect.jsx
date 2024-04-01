@@ -22,7 +22,6 @@ const labelsOpt = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
 
 
 export function MultiSelect({ onSetLabel, toyToEdit }) {
- console.log(toyToEdit);
   const [labels, setLabels] = useState([...toyToEdit.labels])
 
   useEffect(()=>{
@@ -53,6 +52,7 @@ export function MultiSelect({ onSetLabel, toyToEdit }) {
           input={<OutlinedInput label="Name" />}
           MenuProps={MenuProps}
           sx={{ border: 'non' }}
+          color="success"
         >
           {labelsOpt.map((label) => (
             <MenuItem

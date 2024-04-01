@@ -1,0 +1,17 @@
+.edit-container {
+    text-align: center;
+    background-color: var(--green);
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 1em;
+
+    & h2 {
+        margin-bottom: 1em;
+    }
+
+    & .input {
+        margin: 1em;
+    }
+
+   
+}
