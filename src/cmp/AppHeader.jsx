@@ -36,6 +36,9 @@ export function AppHeader() {
                     <NavLink to="/about" >About</NavLink>
                     <NavLink to="/toy" >Toys</NavLink>
                     <NavLink to="/statistics" >Stats</NavLink>
+                    {user && <span className="user-info">
+                <NavLink title='user-details' to="/user">{user.fullname}</NavLink>
+                </span>}
                 </nav>
             </section>
 

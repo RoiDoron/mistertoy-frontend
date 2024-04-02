@@ -5,7 +5,8 @@ export const utilService = {
     loadFromStorage,
     saveToStorage,
     animateCSS,
-    debounce
+    debounce,
+    getEmptyReview
 }
 
 function makeId(length = 6) {
@@ -72,3 +73,9 @@ function debounce(func, timeout = 300) {
         }, timeout)
     }
 }
+
+function getEmptyReview() {
+    return {
+      txt: '',
+    }
+  }
